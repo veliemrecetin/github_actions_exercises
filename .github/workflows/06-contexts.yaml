@@ -6,9 +6,15 @@ on:
       debug:
         type: boolean
         default: false
-
+env:
+  MY_WORKFLOW_VAR: "workflow"
+  MY_OVERWRITTEN_VAR: "workflow"
+  
 jobs:
   echo-data:
+    env:
+      MY_WORKFLOW_JOB: "job"
+      MY_OVERWRITTEN_WAR: "job"
     runs-on: ubuntu-latest
     steps:
       - name: Display Information
@@ -22,4 +28,10 @@ jobs:
           echo "Run Number ${{github.run_number}}"
       - name: Retrieve Variable
         run: |
-          echo "Event Name ${{vars.MY_VAR}}"
+          echo "Retrived Var: ${{vars.MY_VAR}}"
+      - name: Print Workflow Env Variable
+        run: |
+          echo "Workflow Env: ${{env.MY_WORKFLOW_VAR}}"
+      - name: Print Job Env Variable
+        run: |
+          echo "Job Env: ${{env.MY_OVERWRITTEN_VAR}}"

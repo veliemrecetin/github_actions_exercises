@@ -21,4 +21,4 @@ jobs:
       - name: "[debug] print when triggered from Main"
         if: ${{ inputs.debug && github.ref == 'refs/heads/main' }}
         run: |
-          echo "I was triggered by Main
+          echo "I was triggered by Main"
